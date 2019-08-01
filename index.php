@@ -156,14 +156,16 @@
 
   <!-- MODAL BUSQUEDA-->
   <div class="modal fade" tabindex="-1" role="dialog" id="Busqueda" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" style="border-radius: none;">
       <div class="modal-content">
-        <div class="input-group flex-nowrap">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="addon-wrapping"><img src="img/lupa.png" class="img-fluid" alt="Responsive image" width="20"></span>
-          </div>
-          <input type="text" id="inputBuscar" placeholder="Buscar" aria-label="Username" aria-describedby="addon-wrapping">
-        </div>
+          <form class="form-inline form-row">
+            <div class="col-11">
+              <input type="password" id="inputBuscar" placeholder="Buscar">
+            </div>
+            <div class="col-1">
+              <input type="image" src="img/lupa.png" alt="Submit Form" />
+            </div>
+          </form>
       </div>
     </div>
   </div>
