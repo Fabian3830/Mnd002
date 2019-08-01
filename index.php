@@ -158,25 +158,27 @@
   <div class="modal fade" tabindex="-1" role="dialog" id="Busqueda" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="border-radius: none;">
       <div class="modal-content">
-          <form class="form-inline form-row">
-            <div class="col-11">
-              <input type="password" id="inputBuscar" placeholder="Buscar">
-            </div>
-            <div class="col-1">
-              <input type="image" src="img/lupa.png" alt="Submit Form" />
-            </div>
-          </form>
+        <form class="form-inline form-row">
+          <div class="col-11">
+            <input type="password" id="inputBuscar" placeholder="Buscar">
+          </div>
+          <div class="col-1">
+            <input type="image" src="img/lupa.png" alt="Submit Form" />
+          </div>
+        </form>
       </div>
     </div>
   </div>
   <!-- /MODAL BUSQUEDA-->
 
-  <!-- MODAL SESION-->
+  <!-- MODAL SESION/REGISTRO-->
   <div class="modal fade" tabindex="-1" role="dialog" id="Sesion" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content" style="height: 350px">
-        <label class="mx-auto font-weight-bold mt-2" style="font-size: 22px">Inicia tu sesión!</label>
-        <form style="width:100%" class="mx-auto my-auto px-4">
+        <div class="modal-header py-0">
+          <label class="mx-auto font-weight-bold mt-2" style="font-size: 22px">Inicia tu sesión!</label>
+        </div>
+        <form style="width:100%" class="mx-auto my-auto px-4" id="login-form">
           <div class="form-group mx-auto">
             <label for="InputEmail" style="font-size: 20px">Correo electrónico</label>
             <input type="email" class="inputInicioSesion" id="InputEmail" aria-describedby="emailHelp" placeholder="Ingresa tu correo">
@@ -188,12 +190,33 @@
           <div class="row">
             <div class="col-auto">
               <label class="mb-0" style="font-size: 14px">No te has registrado aún?</label><br />
-              <button type="button" class="btn btn-link text-danger btn-sm p-0">Registrate!</button>
+              <button type="button" class="btn btn-link text-danger btn-sm p-0" id="Registro">Registrate!</button>
             </div>
             <div class="col-auto ml-auto">
               <button type="submit" class="btn btn-primary my-auto" style="width: 80px; height: 47px">
                 <label class="mb-0" style="font-size: 18px">Entrar</label>
               </button>
+            </div>
+          </div>
+        </form>
+        <form id="register-form" action="" method="post" role="form" style="display: none;">
+          <div class="form-group">
+            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Usuario" value="">
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Correo electronico" value="">
+          </div>
+          <div class="form-group">
+            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Contraseña">
+          </div>
+          <div class="form-group">
+            <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirmar contraseña">
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Crear cuenta">
+              </div>
             </div>
           </div>
         </form>
