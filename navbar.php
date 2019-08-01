@@ -34,7 +34,7 @@
     </ul>
 
     <button type="button" class="btn btn-primary mr-1" data-toggle="modal" data-target="#Busqueda">Buscar</button>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Sesion">Iniciar Sesión</button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Sesion" id="btnInicio"  onclick="document.getElementById('titulo').innerHTML = 'Inicia tu sesión!'">Iniciar Sesión</button>
 
   </div>
 </nav>

@@ -170,27 +170,26 @@
     </div>
   </div>
   <!-- /MODAL BUSQUEDA-->
-
   <!-- MODAL SESION/REGISTRO-->
   <div class="modal fade" tabindex="-1" role="dialog" id="Sesion" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content" style="height: 350px">
+      <div class="modal-content" style="height: 390px">
         <div class="modal-header py-0">
-          <label class="mx-auto font-weight-bold mt-2" style="font-size: 22px">Inicia tu sesión!</label>
+          <h2 class="font-weight-bold mx-auto" style="font-size: 22px;" id="titulo">Inicia tu sesión!</h2>
         </div>
         <form style="width:100%" class="mx-auto my-auto px-4" id="login-form">
-          <div class="form-group mx-auto">
+          <div class="form-group">
             <label for="InputEmail" style="font-size: 20px">Correo electrónico</label>
-            <input type="email" class="inputInicioSesion" id="InputEmail" aria-describedby="emailHelp" placeholder="Ingresa tu correo">
+            <input type="email" class="inputInicioSesion" id="InputEmail" aria-describedby="emailHelp">
           </div>
-          <div class="form-group mx-auto">
+          <div class="form-group mt-2">
             <label for="InputPassword" style="font-size: 20px">Contraseña</label>
-            <input type="password" class="inputInicioSesion" id="InputPassword" placeholder="Ingresa tu contraseña">
+            <input type="password" class="inputInicioSesion" id="InputPassword">
           </div>
-          <div class="row">
+          <div class="row mt-5">
             <div class="col-auto">
-              <label class="mb-0" style="font-size: 14px">No te has registrado aún?</label><br />
-              <button type="button" class="btn btn-link text-danger btn-sm p-0" id="Registro">Registrate!</button>
+              <label class="mb-0" style="font-size: 14px">No te has registrado aún?</label><br/>
+              <button type="button" class="btn btn-link text-danger btn-sm p-0" id="Registro" onclick="document.getElementById('titulo').innerHTML = 'Formulario de Registro'">Registrate!</button>
             </div>
             <div class="col-auto ml-auto">
               <button type="submit" class="btn btn-primary my-auto" style="width: 80px; height: 47px">
@@ -199,29 +198,48 @@
             </div>
           </div>
         </form>
-        <form id="register-form" action="" method="post" role="form" style="display: none;">
-          <div class="form-group">
-            <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Usuario" value="">
+        <!-- FORM REGISTRO -->
+        <form id="register-form" method="post" role="form" style="display: none; width:100%;" class="mx-auto my-auto px-4">
+          <div class="row form-group mb-1">
+            <div class="col pr-1">
+              <label class="mb-0" for="nombre">Nombre</label>
+              <input type="text" name="nombre" id="nombre" tabindex="1" class="inputRegistro mb-1" value="">
+            </div>
+            <div class="col pl-1">
+              <label class="mb-0" for="apellido">Apellido</label>
+              <input type="text" name="apellido" id="apellido" tabindex="1" class="inputRegistro mb-1" value="">
+            </div>
           </div>
-          <div class="form-group">
-            <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Correo electronico" value="">
+          <div class="form-group mb-1">
+            <label class="mb-0" for="email">Correo electrónico</label>
+            <input type="email" name="email" id="email" tabindex="1" class="inputRegistro mb-1" value="">
           </div>
-          <div class="form-group">
-            <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Contraseña">
+          <div class="form-group mb-1">
+            <label class="mb-0" for="password">Contraseña</label>
+            <input type="password" name="password" id="password" tabindex="2" class="inputRegistro mb-1">
           </div>
-          <div class="form-group">
-            <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirmar contraseña">
+          <div class="form-group mb-1">
+            <label class="mb-0" for="confirm-password">Repite tu contraseña</label>
+            <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="inputRegistro mb-1">
           </div>
-          <div class="form-group">
-            <div class="row">
-              <div class="col-sm-6 col-sm-offset-3">
-                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Crear cuenta">
+          <div class="form-group mb-1">
+            <div class="row mt-1">
+              <div class="col-auto">
+                <label class="mb-0" style="font-size: 14px">Ya tienes cuenta?</label><br />
+                <button type="button" class="btn btn-link text-danger btn-sm p-0 mb-2" id="btnSesion" onclick="document.getElementById('titulo').innerHTML = 'Inicia tu sesión!'">Inicia sesión!</button>
+              </div>
+              <div class="col-auto ml-auto">
+                <button type="submit" class="btn btn-primary my-auto" style="width: 80px; height: 47px">
+                  <label class="mb-0" style="font-size: 18px">Entrar</label>
+                </button>
               </div>
             </div>
           </div>
-        </form>
       </div>
     </div>
+    </form>
+  </div>
+  </div>
   </div>
   <!-- /MODAL SESION-->
 
