@@ -1,5 +1,9 @@
 $(function () {
 
+	 
+     
+
+
 	$("#btnInicio").click(function (e) {
 		$("#login-form").delay(100).fadeIn(100);
 		$("#register-form").fadeOut(100);
@@ -17,7 +21,7 @@ $(function () {
 	});
 
 	$("#BtnEntrar").click(function (e) {
-
+	 
 		form = $("#login-form");
 		console.log('llega');
 		$.ajax({
@@ -30,15 +34,12 @@ $(function () {
 					/*INICIOO SESION */
 					console.log(data)
 					console.log(data.datos_usuario)
-					/*<a href="" class="nav-link" style="color: white; font-size: 17px" 
-					data-toggle="modal" data-target="#Sesion" id="btnInicio" 
-					onclick="document.getElementById('titulo').innerHTML = 'Inicia tu sesión!'">Iniciar Sesión</a>
-                    */                
-                    
+					 
+                    localStorage['datos-usuarios']=data.datos_usuario; 
 					$("#btnInicio").remove();
 					
-					$("#navbarSupportedContent").append('<a href="" class="nav-link" style="color: white; font-size: 17px" data-toggle="modal" data-target="#Sesion" id="btnInicio">'+data.datos_usuario.nombre+'</a>');
-
+					$("#navbarSupportedContent").append('<a  class="nav-link" style="color: white; font-size: 17px" >'+data.datos_usuario.nombre+'</a>');
+					$("#BtnEntrar").attr("data-dismiss", "modal");
 				} else {
 					/*FALLO DE DATOS*/
 					console.log('NOLOOOOOOOOOOOOOOOOOOOO')
@@ -63,7 +64,8 @@ $(function () {
 					/*registro correcto */
 					console.log(data);
 					console.log('registro correcto');
-					 
+					alert('registro correcto :>)');
+		            location.reload(); 			 
 				} else {
 					/*FALLO DE DATOS*/
 					console.log('fallo durante el registro');
