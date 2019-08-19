@@ -26,7 +26,14 @@ $(function () {
 			url: "procesa.php",
 			data: form.serialize() + "&accion=login",
 			success: function (data) {
-				  console.log(data);
+				if (data.valido) {
+					/*INICIOO SESION */
+					console.log(data)
+					console.log(data.datos_usuario)
+				} else {
+					/*FALLO DE DATOS*/
+					console.log('NOLOOOOOOOOOOOOOOOOOOOO')
+				}
 			}
 		});//ajax
 	});

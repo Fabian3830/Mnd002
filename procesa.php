@@ -9,6 +9,7 @@ $accion = $_POST["accion"];
 switch ($accion) {
     case "login":
         $resultado = $user->Login($_POST);      
+       
         break;
     
    
@@ -24,4 +25,4 @@ switch ($accion) {
 }
 
 
-echo json_encode($resultado);
+ echo json_encode($resultado);

@@ -24,11 +24,11 @@
         <form style="width:100%" class="mx-auto my-auto px-4" id="login-form">
           <div class="form-group">
             <label for="InputEmail" style="font-size: 20px">Correo electrónico</label>
-            <input type="LOGemail" class="inputInicioSesion" id="InputEmail" aria-describedby="emailHelp">
+            <input type="email" name="InputEmail" class="inputInicioSesion" id="InputEmail" aria-describedby="emailHelp">
           </div>
           <div class="form-group mt-2">
             <label for="InputPassword" style="font-size: 20px">Contraseña</label>
-            <input type="LOGpassword" class="inputInicioSesion" id="InputPassword">
+            <input type="password" name="InputPassword" class="inputInicioSesion" id="InputPassword">
           </div>
           <div class="row mt-5">
             <div class="col-auto">
@@ -64,7 +64,7 @@
           </div>
           <div class="form-group mb-1">
             <label class="mb-0" for="confirm-password">Repite tu contraseña</label>
-            <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="inputRegistro mb-1">
+            <input type="password" name="REGconfirm-password" id="confirm-password" tabindex="2" class="inputRegistro mb-1">
           </div>
           <div class="form-group mb-1">
             <div class="row mt-1">

@@ -47,7 +47,7 @@ class Usuario
     {
         require 'conexion.php';
         $retorno = array();
-
+        $retorno["valido"] = false;
            
         $sql = "select * from tb_cliente where correo=:correo and contra=:contrasena";
 
@@ -56,31 +56,23 @@ class Usuario
         
         $stid = oci_parse($conn, $sql);
         
-        oci_bind_by_name($stid , ':correo',$datos['LOGemail']);
-        oci_bind_by_name($stid , ':contrasena', $datos['LOGpassword']);
+        oci_bind_by_name($stid , ':correo',$datos['InputEmail']);
+        oci_bind_by_name($stid , ':contrasena', $datos['InputPassword']);
         oci_execute($stid);
 
-        while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
 
-            foreach ($row as $item) {
-              array_push( $retorno,$item);
-            }
-        }
+        while (($row = oci_fetch_assoc($stid)) != false) {
+               $_SESSION["datos-usuario"] = array(
+                "Id" => $row['ID_CLIENTE'],
+                "correo" =>$row['CORREO'],
+                "nombre" => $row['NOMBRE'],
+                "contrasena" =>$row['CONTRA']
+               );
+            $retorno["valido"] = true;
+       }
+       $retorno['datos_usuario']=$_SESSION["datos-usuario"];
 
-
-
-
-        /*$_SESSION["datos-usuario"] = array(
-            "Id" => $_SESSION["datos-usuario"] > $usuario["Id"],
-            "Cedula" => $usuario["Cedula"],
-            "Nombre" => $usuario["Nombre"],
-            "Apellidos" => $usuario["Apellidos"],
-            "Rol" => $usuario["Rol"]
-        );*/
-
-
-
-        return $retorno;
+       return $retorno;
     }
 
 }
