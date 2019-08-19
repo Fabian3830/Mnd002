@@ -39,4 +39,29 @@ $(function () {
 	});
 
 
+
+	$("#BtnRegisrtar").click(function () {
+
+		form = $("#register-form");
+		console.log('llega');
+		$.ajax({
+			type: "post",
+			dataType: "json",
+			url: "procesa.php",
+			data: form.serialize() + "&accion=registrar",
+			success: function (data) {
+				if (data.valido) {
+					/*registro correcto */
+					console.log(data);
+					console.log('registro correcto');
+					 
+				} else {
+					/*FALLO DE DATOS*/
+					console.log('fallo durante el registro');
+					console.log(data.error);
+				}
+			}
+		});//ajax
+	});
+
 });
