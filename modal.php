@@ -24,11 +24,11 @@
         <form style="width:100%" class="mx-auto my-auto px-4" id="login-form">
           <div class="form-group">
             <label for="InputEmail" style="font-size: 20px">Correo electrónico</label>
-            <input type="email" class="inputInicioSesion" id="InputEmail" aria-describedby="emailHelp">
+            <input type="LOGemail" class="inputInicioSesion" id="InputEmail" aria-describedby="emailHelp">
           </div>
           <div class="form-group mt-2">
             <label for="InputPassword" style="font-size: 20px">Contraseña</label>
-            <input type="password" class="inputInicioSesion" id="InputPassword">
+            <input type="LOGpassword" class="inputInicioSesion" id="InputPassword">
           </div>
           <div class="row mt-5">
             <div class="col-auto">
@@ -36,7 +36,7 @@
               <button type="button" class="btn btn-link text-danger btn-sm p-0" id="Registro" onclick="document.getElementById('titulo').innerHTML = 'Formulario de Registro'">Registrate!</button>
             </div>
             <div class="col-auto ml-auto">
-              <button type="submit" class="btn btn-primary my-auto" style="width: 80px; height: 47px">
+              <button type="submit" class="btn btn-primary my-auto" style="width: 80px; height: 47px" id="BtnEntrar" >
                 <label class="mb-0" style="font-size: 18px">Entrar</label>
               </button>
             </div>
@@ -47,20 +47,20 @@
           <div class="row form-group mb-1">
             <div class="col pr-1">
               <label class="mb-0" for="nombre">Nombre</label>
-              <input type="text" name="nombre" id="nombre" tabindex="1" class="inputRegistro mb-1" value="">
+              <input type="text" name="REGnombre" id="nombre" tabindex="1" class="inputRegistro mb-1" value="">
             </div>
             <div class="col pl-1">
               <label class="mb-0" for="apellido">Apellido</label>
-              <input type="text" name="apellido" id="apellido" tabindex="1" class="inputRegistro mb-1" value="">
+              <input type="text" name="REGapellido" id="apellido" tabindex="1" class="inputRegistro mb-1" value="">
             </div>
           </div>
           <div class="form-group mb-1">
             <label class="mb-0" for="email">Correo electrónico</label>
-            <input type="email" name="email" id="email" tabindex="1" class="inputRegistro mb-1" value="">
+            <input type="email" name="REGemail" id="email" tabindex="1" class="inputRegistro mb-1" value="">
           </div>
           <div class="form-group mb-1">
             <label class="mb-0" for="password">Contraseña</label>
-            <input type="password" name="password" id="password" tabindex="2" class="inputRegistro mb-1">
+            <input type="password" name="REGpassword" id="password" tabindex="2" class="inputRegistro mb-1">
           </div>
           <div class="form-group mb-1">
             <label class="mb-0" for="confirm-password">Repite tu contraseña</label>
@@ -73,7 +73,7 @@
                 <button type="button" class="btn btn-link text-danger btn-sm p-0 mb-2" id="btnSesion" onclick="document.getElementById('titulo').innerHTML = 'Inicia tu sesión!'">Inicia sesión!</button>
               </div>
               <div class="col-auto ml-auto">
-                <button type="submit" class="btn btn-primary my-auto" style="width: 80px; height: 47px">
+                <button type="submit" class="btn btn-primary my-auto" style="width: 80px; height: 47px" id="BtnRegisrtar">
                   <label class="mb-0" style="font-size: 18px">Entrar</label>
                 </button>
               </div>

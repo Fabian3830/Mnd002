@@ -1,19 +1,35 @@
-$(function() {
+$(function () {
 
-    $("#btnInicio").click(function(e) {
+	$("#btnInicio").click(function (e) {
 		$("#login-form").delay(100).fadeIn(100);
- 		$("#register-form").fadeOut(100);
+		$("#register-form").fadeOut(100);
 		e.preventDefault();
 	});
-	$("#btnSesion").click(function(e) {
+	$("#btnSesion").click(function (e) {
 		$("#login-form").delay(100).fadeIn(100);
- 		$("#register-form").fadeOut(100);
+		$("#register-form").fadeOut(100);
 		e.preventDefault();
 	});
-	$('#Registro').click(function(e) {
+	$('#Registro').click(function (e) {
 		$("#register-form").delay(100).fadeIn(100);
- 		$("#login-form").fadeOut(100);
+		$("#login-form").fadeOut(100);
 		e.preventDefault();
 	});
+
+	$("#BtnEntrar").click(function () {
+
+		form = $("#login-form");
+		console.log('llega');
+		$.ajax({
+			type: "post",
+			dataType: "json",
+			url: "procesa.php",
+			data: form.serialize() + "&accion=login",
+			success: function (data) {
+				  console.log(data);
+			}
+		});//ajax
+	});
+
 
 });
