@@ -14,7 +14,7 @@
     <link href="vendor/css/shop-homepage.css" rel="stylesheet">
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery-ui.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
 
