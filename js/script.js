@@ -16,7 +16,7 @@ $(function () {
 		e.preventDefault();
 	});
 
-	$("#BtnEntrar").click(function () {
+	$("#BtnEntrar").click(function (e) {
 
 		form = $("#login-form");
 		console.log('llega');
@@ -30,6 +30,15 @@ $(function () {
 					/*INICIOO SESION */
 					console.log(data)
 					console.log(data.datos_usuario)
+					/*<a href="" class="nav-link" style="color: white; font-size: 17px" 
+					data-toggle="modal" data-target="#Sesion" id="btnInicio" 
+					onclick="document.getElementById('titulo').innerHTML = 'Inicia tu sesión!'">Iniciar Sesión</a>
+                    */                
+                    
+					$("#btnInicio").remove();
+					
+					$("#navbarSupportedContent").append('<a href="" class="nav-link" style="color: white; font-size: 17px" data-toggle="modal" data-target="#Sesion" id="btnInicio">'+data.datos_usuario.nombre+'</a>');
+
 				} else {
 					/*FALLO DE DATOS*/
 					console.log('NOLOOOOOOOOOOOOOOOOOOOO')
