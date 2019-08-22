@@ -17,15 +17,15 @@ switch ($accion) {
 
         break;
 
-
-        /*
+        
     case "logout":
         session_start();
-        //unset($_SESSION["datos-usuario"]["Nombre"]);        
+        
         session_destroy();
         header("Location:index.php");
+        
         break;
-    */
+
 }
 
 echo json_encode($resultado);
