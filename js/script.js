@@ -6,20 +6,10 @@ $(function () {
 	if ("login" in localStorage) {
 
 		alert(localStorage["login"]);
-		if (localStorage["login"]=='true') {
-			$("#btnInicio").remove();
-			$("#navbarSupportedContent").append('<a  class="nav-link" style="color: white; font-size: 17px" id="quark" >' + localStorage['datos_usuarios'] + '</a>');
-			$("#navbarSupportedContent").append('<a  class="nav-link" style="color: white; font-size: 17px" id="logout">logout</a>');
+		if (localStorage["login"]=='false') {
+			$("#navbarSupportedContent").append('<button type="submit" class="btn btn-primary my-auto" style="width: 80px; height: 47px" id="logout" ><label class="mb-0" style="font-size: 18px">logout</label> </button>');
 
-			console.log(localStorage['datos_usuarios']);
-
-		} else {
-			alert('VERGAAAAAAAAAAAAA');
-			var aa="document.getElementById('titulo').innerHTML = 'Inicia tu sesión!'" ;
-			$("#quark").remove();
-			$("#logout").remove();
-			$("#navbarSupportedContent").apped('<a  href=""  class="nav-link" style="color: white; font-size: 17px" data-toggle="modal" data-target="#Sesion" id="btnInicio" onclick=" '+aa+' ">Iniciar Sesión</a>');
-		}
+		} 
 	}
 
 	$("#btnInicio").click(function (e) {
@@ -55,14 +45,19 @@ $(function () {
 					localStorage['datos_usuarios'] = data.datos_usuario.nombre;
 					//console.log(localStorage['datos_usuarios']);
 					localStorage['login'] = true;
-					location.reload();
+
+					$("#btnInicio").remove();
+					$("#navbarSupportedContent").append('<a  class="nav-link" style="color: white; font-size: 17px" id="quark" >' + localStorage['datos_usuarios'] + '</a>');
+					$("#navbarSupportedContent").append('<button type="submit" class="btn btn-primary my-auto" style="width: 80px; height: 47px" id="logout" ><label class="mb-0" style="font-size: 18px">logout</label> </button>');
+					$("#Sesion").modal('hide');
+					//location.reload();
 				} else {
 					/*FALLO DE DATOS*/
 					console.log('NOLOOOOOOOOOOOOOOOOOOOO');
 				}
 			}
 		});//ajax
-		$("#Sesion").modal('hide');
+
 	});
 
 
@@ -96,6 +91,8 @@ $(function () {
 
 
 	$("#logout").click(function () {
+		alert('OK');
+
 		localStorage['login'] = false;
 		localStorage['datos_usuarios'] = undefined;
 		/*
@@ -108,9 +105,12 @@ $(function () {
 				
 			}
 		});*/
-		alert('OK');
-		location.reload();
+		$("#quark").remove();
+		$("#logout").remove();
+		var aa = "document.getElementById('titulo').innerHTML = 'Inicia tu sesión!'";
+		$("#navbarSupportedContent").append('<a  href=""  class="nav-link" style="color: white; font-size: 17px" data-toggle="modal" data-target="#Sesion" id="btnInicio" onclick=" ' + aa + ' ">Iniciar Sesión</a>');
+		//location.reload();
 	});
 
-
+      
 });
