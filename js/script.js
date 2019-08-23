@@ -6,10 +6,26 @@ $(function () {
 	if ("login" in localStorage) {
 
 		alert(localStorage["login"]);
-		if (localStorage["login"]=='false') {
-			$("#navbarSupportedContent").append('<button type="submit" class="btn btn-primary my-auto" style="width: 80px; height: 47px" id="logout" ><label class="mb-0" style="font-size: 18px">logout</label> </button>');
+		if (localStorage["login"] == 'true') {
 
-		} 
+			$("#btnInicio").remove();
+			if ($("#quark").length) {
+				// hacer algo aquí si el elemento existe
+			} else {
+				$("#navbarSupportedContent").append('<a  class="nav-link" style="color: white; font-size: 17px" id="quark" >' + localStorage['datos_usuarios'] + '</a>');
+			}
+			if ($("#logout").length) {
+				// hacer algo aquí si el elemento existe
+			} else {
+				$("#navbarSupportedContent").append('<button type="submit" class="btn btn-primary my-auto" style="width: 80px; height: 47px" id="logout" ><label class="mb-0" style="font-size: 18px">logout</label> </button>');
+			}
+			
+			
+			
+
+		}
+
+
 	}
 
 	$("#btnInicio").click(function (e) {
@@ -28,7 +44,8 @@ $(function () {
 		e.preventDefault();
 	});
 
-	$("#BtnEntrar").click(function () {
+	//$(document).on("click", "#logout", function () {
+	$(document).on("click", "#BtnEntrar",function () {
 
 		form = $("#login-form");
 		console.log('llega');
@@ -90,7 +107,7 @@ $(function () {
 
 
 
-	$("#logout").click(function () {
+	/*$("#logout").click(function () {
 		alert('OK');
 
 		localStorage['login'] = false;
@@ -104,13 +121,21 @@ $(function () {
 			success: function (data) {
 				
 			}
-		});*/
+		});
 		$("#quark").remove();
 		$("#logout").remove();
 		var aa = "document.getElementById('titulo').innerHTML = 'Inicia tu sesión!'";
 		$("#navbarSupportedContent").append('<a  href=""  class="nav-link" style="color: white; font-size: 17px" data-toggle="modal" data-target="#Sesion" id="btnInicio" onclick=" ' + aa + ' ">Iniciar Sesión</a>');
 		//location.reload();
-	});
+	});*/
 
-      
+	$(document).on("click", "#logout", function () {
+		
+		localStorage['login'] = false;
+		localStorage['datos_usuarios'] = undefined;
+		$("#quark").remove();
+		$("#logout").remove();
+		var aa = "document.getElementById('titulo').innerHTML = 'Inicia tu sesión!'";
+		$("#navbarSupportedContent").append('<a  href=""  class="nav-link" style="color: white; font-size: 17px" data-toggle="modal" data-target="#Sesion" id="btnInicio" onclick=" ' + aa + ' ">Iniciar Sesión</a>');
+	});
 });
