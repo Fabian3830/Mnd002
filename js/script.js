@@ -5,7 +5,7 @@ $(function () {
 
 	if ("login" in localStorage) {
 
-		alert(localStorage["login"]);
+		//alert(localStorage["login"]);
 		if (localStorage["login"] == 'true') {
 
 			$("#btnInicio").remove();

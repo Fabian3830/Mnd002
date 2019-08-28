@@ -44,6 +44,31 @@
 
       <div class="row">
 
+
+        <?php
+        $conn = oci_connect("Proyecto", "1", "localhost:1521/xe");
+        if (!$conn) {
+          $e = oci_error();
+          trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+        }
+
+        $sql= 'SELECT * FROM tb_ar';
+        $stid = oci_parse($conn,$sql);
+        oci_execute($stid);
+
+     
+        while (($row = oci_fetch_assoc($stid)) != false) {
+          $_SESSION["datos-usuario"] = array(
+              "Id" => $row['ID_CLIENTE'],
+              "correo" => $row['CORREO'],
+              "nombre" => $row['NOMBRE'],
+              "contrasena" => $row['CONTRA']
+          );
+          $retorno["valido"] = true;
+      }
+
+        ?>
+
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="card h-100">
             <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
@@ -60,6 +85,7 @@
           </div>
         </div>
 
+        <!-- 
         <div class="col-lg-4 col-md-6 mb-4">
           <div class="card h-100">
             <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
@@ -139,7 +165,8 @@
             </div>
           </div>
         </div>
-
+                  
+-->
       </div>
       <!-- /.row CARDS-->
 
