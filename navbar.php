@@ -36,15 +36,17 @@
 
 
     <div class="nav-item dropleft">
-      <a class="nav-link dropdown-toggle" href="carrito.php" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        <img src="img/carrito.png" width="30px" onmouseover=" miFuncion()"/>
+      <a class="nav-link dropdown-toggle" href="carrito.php" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false" onmouseover="miFuncion()">
+        <img src="img/carrito.png" width="30px" />
       </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <div id="poep" class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-        <div class="dropdown-divider"></div>
+      <!--
+<div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">Articulo 1</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Articulo 2</a>
+      -->
+        
+        
 
         <button type="button" class="btn btn-secondary mt-2 mx-auto d-flex">Confirmar</button>
 

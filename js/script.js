@@ -24,19 +24,12 @@ $(function () {
 			}
 			
 			
-			
-
 		}
 
 
 	}
-	if ("carrito" in localStorage) {
-		
-		alert(localStorage["carrito"]);
-	 
-        alert('a la consola compa');
-	}
 
+	
 	$("#btnInicio").click(function (e) {
 		$("#login-form").delay(100).fadeIn(100);
 		$("#register-form").fadeOut(100);
@@ -135,19 +128,58 @@ $(function () {
 	
 });
 
+
+
+function articulo(nombre,ide,cant){
+	this.nombre = nombre;
+	this.ide =ide;
+	this.cant=cant;
+}
+
+
 function agregar(elemento) {
    
+	//JSON.parse(text);  JSON->JS
+	//JSON.stringify();  JS->JSON
 	var arrayDeCadenas =$(elemento).data('value').split('-');
-	alert(arrayDeCadenas);
+	//window.alert(arrayDeCadenas);
 	if ("carrito" in localStorage) {
-		localStorage['carrito']= [{ide:arrayDeCadenas[1],nombre:arrayDeCadenas[0]},localStorage['carrito']];
+
+		 var yare=new articulo(arrayDeCadenas[0],arrayDeCadenas[1],1);
+		 var daze=JSON.parse(localStorage['carrito']);
+		localStorage['carrito']= JSON.stringify([yare].concat(daze));
 
 	}else{
-		localStorage['carrito']= [{ide:arrayDeCadenas[1],nombre:arrayDeCadenas[0]}];
+		var yare=new articulo(arrayDeCadenas[0],arrayDeCadenas[1],1);
+		localStorage['carrito']=JSON.stringify( [yare]);
 	}
 }
 
 
 function miFuncion() {
-	window.alert('alerta');
-  }
+	if ("carrito" in localStorage) {
+		
+		//var daze=JSON.parse(localStorage['carrito']);
+		//window.alert(typeof(localStorage['carrito']));
+		//window.alert(localStorage['carrito']);
+		var arrayx=JSON.parse(localStorage['carrito']);
+		
+		console.log(arrayx)
+		
+	
+		$(".dropdown-divider").remove();
+		$(".dropdown-item").remove();
+		arrayx.forEach(item => {
+			$("#poep").append('<div  class="dropdown-divider"></div>');
+			$("#poep").append('<a   class="dropdown-item" href="#">'+item.nombre+'</a>');
+			
+		});
+			
+				
+        
+	}else{
+ 
+	}
+
+	
+}
