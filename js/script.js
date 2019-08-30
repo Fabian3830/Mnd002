@@ -146,3 +146,8 @@ function agregar(elemento) {
 		localStorage['carrito']= [{ide:arrayDeCadenas[1],nombre:arrayDeCadenas[0]}];
 	}
 }
+
+
+function miFuncion() {
+	window.alert('alerta');
+  }

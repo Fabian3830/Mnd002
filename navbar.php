@@ -4,12 +4,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <script>
-    function miFuncion() {
-      window.alert('alerta');
-    }
-  </script>
-
+   
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
