@@ -1,3 +1,6 @@
+
+ 
+
 $(function () {
 
 
@@ -26,6 +29,12 @@ $(function () {
 		}
 
 
+	}
+	if ("carrito" in localStorage) {
+		
+		alert(localStorage["carrito"]);
+	 
+        alert('a la consola compa');
 	}
 
 	$("#btnInicio").click(function (e) {
@@ -107,27 +116,7 @@ $(function () {
 
 
 
-	/*$("#logout").click(function () {
-		alert('OK');
-
-		localStorage['login'] = false;
-		localStorage['datos_usuarios'] = undefined;
-		/*
-		$.ajax({
-			type: "post",
-			dataType: "json",
-			url: "procesa.php",
-			data: "accion=registrar",
-			success: function (data) {
-				
-			}
-		});
-		$("#quark").remove();
-		$("#logout").remove();
-		var aa = "document.getElementById('titulo').innerHTML = 'Inicia tu sesión!'";
-		$("#navbarSupportedContent").append('<a  href=""  class="nav-link" style="color: white; font-size: 17px" data-toggle="modal" data-target="#Sesion" id="btnInicio" onclick=" ' + aa + ' ">Iniciar Sesión</a>');
-		//location.reload();
-	});*/
+	 
 
 	$(document).on("click", "#logout", function () {
 		
@@ -138,4 +127,22 @@ $(function () {
 		var aa = "document.getElementById('titulo').innerHTML = 'Inicia tu sesión!'";
 		$("#navbarSupportedContent").append('<a  href=""  class="nav-link" style="color: white; font-size: 17px" data-toggle="modal" data-target="#Sesion" id="btnInicio" onclick=" ' + aa + ' ">Iniciar Sesión</a>');
 	});
+
+	
+
+
+
+	
 });
+
+function agregar(elemento) {
+   
+	var arrayDeCadenas =$(elemento).data('value').split('-');
+	alert(arrayDeCadenas);
+	if ("carrito" in localStorage) {
+		localStorage['carrito']= [{ide:arrayDeCadenas[1],nombre:arrayDeCadenas[0]},localStorage['carrito']];
+
+	}else{
+		localStorage['carrito']= [{ide:arrayDeCadenas[1],nombre:arrayDeCadenas[0]}];
+	}
+}
