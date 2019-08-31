@@ -47,7 +47,7 @@ class Usuario
 
                 $compiled = oci_parse($conn, $sql);
 
-                
+
                 oci_bind_by_name($compiled, ':correo', $datos['REGemail']);
                 oci_bind_by_name($compiled, ':nombre', $datos['REGnombre']);
                 oci_bind_by_name($compiled, ':contrasena', $datos['REGpassword']);
@@ -100,6 +100,68 @@ class Usuario
         }
         $retorno['datos_usuario'] = $_SESSION["datos-usuario"];
 
+        return $retorno;
+    }
+
+
+    function comprar($datos = array())
+    {
+        require 'conexion.php';
+        $retorno = array();
+        $retorno["valido"] = false;
+
+        $articulos =  json_decode($datos['datos']);
+
+
+        $sql = " insert into tb_Encabezado (FECHA ,ID_CLIENTE) values(sysdate,:id)";
+        //"&id_cliente="+localStorage['id_cliente']+"&datos="+localStorage["carrito"]+"&accion=comprar"
+
+        $stid = oci_parse($conn, $sql);
+        oci_bind_by_name($stid, ':id', $datos['id_cliente']);
+        oci_execute($stid);
+
+        foreach ($articulos as $key => $value) {
+            $sql = "declare
+                       precio NUMBER;
+                    begin
+             
+                       SELECT precio into precio FROM tb_articulo where no_articulo =:noarticulo;
+                     
+                       INSERT INTO tb_lineaPedido (no_Compra,no_Articulo,unidades ,precio_Unidad ,precio_Total) 
+                       VALUES (Encabezado_seq.CURRVAL,:noarticulo,:unidades,precio,precio*:unidades);    
+                  
+                     end; ";
+
+                     
+            $stid = oci_parse($conn, $sql);
+            oci_bind_by_name($stid, ':noarticulo', $value->ide);
+            oci_bind_by_name($stid, ':unidades', $value->cant);
+            oci_execute($stid);
+        }
+
+        $sql = '
+      
+        declare
+        TOTALeh NUMBER;
+        compra number:=Encabezado_seq.CURRVAL;
+       begin
+         
+      SELECT sum(PRECIO_TOTAL) into TOTALeh FROM tb_lineaPedido lp where lp.NO_COMPRA=compra ;
+      
+      UPDATE tb_Encabezado 
+      SET Total= TOTALeh
+      WHERE NO_COMPRA = compra ;
+      
+          end;
+ 
+       
+       ';
+
+        $stid = oci_parse($conn, $sql);
+         
+        oci_execute($stid);
+
+        $retorno["valido"] = true;
         return $retorno;
     }
 }

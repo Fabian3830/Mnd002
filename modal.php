@@ -7,7 +7,7 @@
             <input type="password" id="inputBuscar" placeholder="Buscar">
           </div>
           <div class="col-1">
-            <input type="image" src="img/lupa.png" alt="Submit Form" />
+            <input type="image" src="SERVER/img/lupa.png" alt="Submit Form" />
           </div>
         </form>
       </div>

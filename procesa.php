@@ -17,6 +17,10 @@ switch ($accion) {
 
         break;
 
+    case "comprar":
+        $resultado = $user->comprar($_POST);
+
+        break;
         
     case "logout":
         session_start();
@@ -29,4 +33,5 @@ switch ($accion) {
 }
 
 echo json_encode($resultado);
+
 
