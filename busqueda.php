@@ -54,7 +54,7 @@
 
         $curs = oci_new_cursor($conn);
         
-        $stid = oci_parse($conn, "begin :cursor := F_Function(3); end;");
+        $stid = oci_parse($conn, "begin :cursor := F_ARTI('".strtoupper($_POST['Buscar'])."'); end;");
         oci_bind_by_name($stid, ":cursor", $curs, -1, OCI_B_CURSOR);
         oci_execute($stid);
 
