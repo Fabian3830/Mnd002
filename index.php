@@ -66,7 +66,7 @@
         while (($row = oci_fetch_assoc($stid)) != false) {
           $JEJE =  '<div class="col-lg-4 col-md-6 mb-4">';
           $JEJE .= '<div class="card h-100">';
-          $JEJE .=    '<a href="#"><img class="card-img-top" src="' . $row['IMG'] . '" width="300" height="400" alt=""></a>';
+          $JEJE .=    '<a href="#"><img class="card-img-top" src="SERVER/img/' . $row['IMG'] . '" width="300" height="400" alt=""></a>';
           $JEJE .=    '<div class="card-body">';
           $JEJE .= '<h4 class="card-title">';
           $JEJE .=   ' <a href="#">' . $row['NOMBRE'] . '</a>';
