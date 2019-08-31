@@ -1,5 +1,5 @@
 
- 
+
 
 $(function () {
 
@@ -22,14 +22,14 @@ $(function () {
 			} else {
 				$("#navbarSupportedContent").append('<button type="submit" class="btn btn-primary my-auto" style="width: 80px; height: 47px" id="logout" ><label class="mb-0" style="font-size: 18px">logout</label> </button>');
 			}
-			
-			
+
+
 		}
 
 
 	}
 
-	
+
 	$("#btnInicio").click(function (e) {
 		$("#login-form").delay(100).fadeIn(100);
 		$("#register-form").fadeOut(100);
@@ -47,7 +47,7 @@ $(function () {
 	});
 
 	//$(document).on("click", "#logout", function () {
-	$(document).on("click", "#BtnEntrar",function () {
+	$(document).on("click", "#BtnEntrar", function () {
 
 		form = $("#login-form");
 		console.log('llega');
@@ -62,6 +62,7 @@ $(function () {
 					//console.log(data);
 
 					localStorage['datos_usuarios'] = data.datos_usuario.nombre;
+					localStorage['id_cliente'] = data.datos_usuario.Id;
 					//console.log(localStorage['datos_usuarios']);
 					localStorage['login'] = true;
 
@@ -109,10 +110,10 @@ $(function () {
 
 
 
-	 
+
 
 	$(document).on("click", "#logout", function () {
-		
+
 		localStorage['login'] = false;
 		localStorage['datos_usuarios'] = undefined;
 		$("#quark").remove();
@@ -121,65 +122,97 @@ $(function () {
 		$("#navbarSupportedContent").append('<a  href=""  class="nav-link" style="color: white; font-size: 17px" data-toggle="modal" data-target="#Sesion" id="btnInicio" onclick=" ' + aa + ' ">Iniciar Sesión</a>');
 	});
 
-	
+
+	$(document).on("click", "#confirma_compra", function () {
+		if ("login" in localStorage) {
+
+			if (localStorage["login"] == 'true') {
+				form = $("#emptyf");
+
+				$.ajax({
+					type: "post",
+					dataType: "json",
+					url: "procesa.php",
+					data: form.serialize() + "&id_cliente=" + localStorage['id_cliente'] + "&datos=" + localStorage["carrito"] + "&accion=comprar",
+					success: function (data) {
+
+
+						if (data.valido) {
+							window.alert('se compro');
+							$(".dropdown-divider").remove();
+							$(".dropdown-item").remove();
+							localStorage['carrito']=undefined;
+						} else {
+							window.alert('no se compro');
+						}
+					}
+				});//ajax
+			} else {
+				window.alert('no has iniciado sesion');
+			}
+		} else {
+
+			window.alert('no has iniciado sesion');
+		}
+
+	});
 
 
 
-	
 });
 
 
 
-function articulo(nombre,ide,cant){
+function articulo(nombre, ide, cant,precio) {
 	this.nombre = nombre;
-	this.ide =ide;
-	this.cant=cant;
+	this.ide = ide;
+	this.cant = cant;
+	this.precio = precio;
 }
 
 
 function agregar(elemento) {
-   
+
 	//JSON.parse(text);  JSON->JS
 	//JSON.stringify();  JS->JSON
-	var arrayDeCadenas =$(elemento).data('value').split('-');
+	var arrayDeCadenas = $(elemento).data('value').split('-');
+	var cant = $('#'+arrayDeCadenas[2]).val();
+	//window.alert(cant);
 	//window.alert(arrayDeCadenas);
-	if ("carrito" in localStorage) {
+	if ("carrito" in localStorage && localStorage['carrito']!=undefined ) {
 
-		 var yare=new articulo(arrayDeCadenas[0],arrayDeCadenas[1],1);
-		 var daze=JSON.parse(localStorage['carrito']);
-		localStorage['carrito']= JSON.stringify([yare].concat(daze));
+		var yare = new articulo(arrayDeCadenas[0], arrayDeCadenas[1], cant,arrayDeCadenas[3]);
+		var daze = JSON.parse(localStorage['carrito']);
+		localStorage['carrito'] = JSON.stringify([yare].concat(daze));
 
-	}else{
-		var yare=new articulo(arrayDeCadenas[0],arrayDeCadenas[1],1);
-		localStorage['carrito']=JSON.stringify( [yare]);
+	} else {
+		var yare = new articulo(arrayDeCadenas[0], arrayDeCadenas[1], cant,arrayDeCadenas[3]);
+		localStorage['carrito'] = JSON.stringify([yare]);
 	}
 }
 
 
 function miFuncion() {
 	if ("carrito" in localStorage) {
-		
-		//var daze=JSON.parse(localStorage['carrito']);
-		//window.alert(typeof(localStorage['carrito']));
-		//window.alert(localStorage['carrito']);
-		var arrayx=JSON.parse(localStorage['carrito']);
-		
-		console.log(arrayx)
-		
-	
+
+		var arrayx = JSON.parse(localStorage['carrito']);
+
+ 
+
+
 		$(".dropdown-divider").remove();
 		$(".dropdown-item").remove();
 		arrayx.forEach(item => {
 			$("#poep").append('<div  class="dropdown-divider"></div>');
-			$("#poep").append('<a   class="dropdown-item" href="#">'+item.nombre+'</a>');
-			
+			$("#poep").append('<a   class="dropdown-item" href="#">' +item.nombre +' x'+ item.cant+'  $'+item.precio+'</a>');
+
 		});
-			
-				
-        
-	}else{
- 
+
+
+	} else {
+		//no hace nada
+
 	}
 
-	
+
 }

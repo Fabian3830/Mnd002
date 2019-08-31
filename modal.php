@@ -2,12 +2,12 @@
  <div class="modal fade" tabindex="-1" role="dialog" id="Busqueda" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document" style="border-radius: none;">
       <div class="modal-content">
-        <form class="form-inline form-row">
+        <form id="form_buscar" method="post" class="form-inline form-row" action="busqueda.php">
           <div class="col-11">
-            <input type="password" id="inputBuscar" placeholder="Buscar">
+            <input type="text" id="inputBuscar" name="Buscar" placeholder="Buscar">
           </div>
           <div class="col-1">
-            <input type="image" src="img/lupa.png" alt="Submit Form" />
+            <input type="image" src="SERVER/img/lupa.png" alt="Submit Form" />
           </div>
         </form>
       </div>
