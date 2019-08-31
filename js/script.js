@@ -62,7 +62,7 @@ $(function () {
 					//console.log(data);
 
 					localStorage['datos_usuarios'] = data.datos_usuario.nombre;
-					localStorage['id_cliente'] =data.datos_usuario.Id;
+					localStorage['id_cliente'] = data.datos_usuario.Id;
 					//console.log(localStorage['datos_usuarios']);
 					localStorage['login'] = true;
 
@@ -128,17 +128,20 @@ $(function () {
 
 			if (localStorage["login"] == 'true') {
 				form = $("#emptyf");
-				
+
 				$.ajax({
 					type: "post",
 					dataType: "json",
 					url: "procesa.php",
-					data: form.serialize() + "&id_cliente="+localStorage['id_cliente']+"&datos="+localStorage["carrito"]+"&accion=comprar",
+					data: form.serialize() + "&id_cliente=" + localStorage['id_cliente'] + "&datos=" + localStorage["carrito"] + "&accion=comprar",
 					success: function (data) {
-						
-						
-					if (data.valido) {
+
+
+						if (data.valido) {
 							window.alert('se compro');
+							$(".dropdown-divider").remove();
+							$(".dropdown-item").remove();
+							localStorage['carrito']=undefined;
 						} else {
 							window.alert('no se compro');
 						}
@@ -151,7 +154,7 @@ $(function () {
 
 			window.alert('no has iniciado sesion');
 		}
-		 
+
 	});
 
 
@@ -172,15 +175,17 @@ function agregar(elemento) {
 	//JSON.parse(text);  JSON->JS
 	//JSON.stringify();  JS->JSON
 	var arrayDeCadenas = $(elemento).data('value').split('-');
+	var cant = $('#'+arrayDeCadenas[2]).val();
+	//window.alert(cant);
 	//window.alert(arrayDeCadenas);
-	if ("carrito" in localStorage) {
+	if ("carrito" in localStorage && localStorage['carrito']!=undefined ) {
 
-		var yare = new articulo(arrayDeCadenas[0], arrayDeCadenas[1], 1);
+		var yare = new articulo(arrayDeCadenas[0], arrayDeCadenas[1], cant);
 		var daze = JSON.parse(localStorage['carrito']);
 		localStorage['carrito'] = JSON.stringify([yare].concat(daze));
 
 	} else {
-		var yare = new articulo(arrayDeCadenas[0], arrayDeCadenas[1], 1);
+		var yare = new articulo(arrayDeCadenas[0], arrayDeCadenas[1], cant);
 		localStorage['carrito'] = JSON.stringify([yare]);
 	}
 }
@@ -191,14 +196,14 @@ function miFuncion() {
 
 		var arrayx = JSON.parse(localStorage['carrito']);
 
-		//console.log(arrayx)
+ 
 
 
 		$(".dropdown-divider").remove();
 		$(".dropdown-item").remove();
 		arrayx.forEach(item => {
 			$("#poep").append('<div  class="dropdown-divider"></div>');
-			$("#poep").append('<a   class="dropdown-item" href="#">' + item.nombre + '</a>');
+			$("#poep").append('<a   class="dropdown-item" href="#">' +item.nombre +' x'+ item.cant+ '</a>');
 
 		});
 

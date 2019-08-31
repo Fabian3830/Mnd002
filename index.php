@@ -62,7 +62,7 @@
 
         oci_execute($stid);
 
-
+         $counter=0; 
         while (($row = oci_fetch_assoc($stid)) != false) {
           $JEJE =  '<div class="col-lg-4 col-md-6 mb-4">';
           $JEJE .= '<div class="card h-100">';
@@ -72,7 +72,8 @@
           $JEJE .=   ' <a href="#">' . $row['NOMBRE'] . '</a>';
           $JEJE .=      '</h4>';
           $JEJE .=  '<h4 class="card-title">';
-          $JEJE .=     '<button id="comprar" onclick="agregar(this)"  data-value="' .$row['NOMBRE'].'-'.$row['NO_ARTICULO'].'">comprar</button>';
+          $JEJE .=     '<button id="comprar" onclick="agregar(this)"  data-value="' .$row['NOMBRE'].'-'.$row['NO_ARTICULO'].'-A'.$counter.'">comprar</button>';
+          $JEJE .=       '<input id="A'.$counter.'" type="number"   min="1" value="1" size="2">';
           $JEJE .=   '</h4>';
           $JEJE .=  '<h5>$' . $row['PRECIO'] . '</h5>';
           $JEJE .=     ' <p class="card-text">' . $row['DESCRIP'] . '</p>';
@@ -83,13 +84,14 @@
           $JEJE .= ' </div>';
           $JEJE .=  '</div>';
           echo $JEJE;
+          $counter++;
         }
 
         ?>
 
 
-
-        <!--<div class="col-lg-4 col-md-6 mb-4">
+<!--
+        <div class="col-lg-4 col-md-6 mb-4">
           <div class="card h-100">
             <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
             <div class="card-body">
@@ -98,6 +100,7 @@
               </h4>
               <h4 class="card-title">
                 <button id="comprar" name="asd" data-value="posho">comprar</button>
+                
               </h4>
               <h5>$24.99</h5>
               <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur! Lorem ipsum dolor sit amet.</p>
@@ -107,8 +110,8 @@
             </div>
           </div>
         </div>
-      -->
-
+      
+-->
       </div>
       <!-- /.row CARDS-->
 
