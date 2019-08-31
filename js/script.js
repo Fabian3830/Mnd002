@@ -163,10 +163,11 @@ $(function () {
 
 
 
-function articulo(nombre, ide, cant) {
+function articulo(nombre, ide, cant,precio) {
 	this.nombre = nombre;
 	this.ide = ide;
 	this.cant = cant;
+	this.precio = precio;
 }
 
 
@@ -180,12 +181,12 @@ function agregar(elemento) {
 	//window.alert(arrayDeCadenas);
 	if ("carrito" in localStorage && localStorage['carrito']!=undefined ) {
 
-		var yare = new articulo(arrayDeCadenas[0], arrayDeCadenas[1], cant);
+		var yare = new articulo(arrayDeCadenas[0], arrayDeCadenas[1], cant,arrayDeCadenas[3]);
 		var daze = JSON.parse(localStorage['carrito']);
 		localStorage['carrito'] = JSON.stringify([yare].concat(daze));
 
 	} else {
-		var yare = new articulo(arrayDeCadenas[0], arrayDeCadenas[1], cant);
+		var yare = new articulo(arrayDeCadenas[0], arrayDeCadenas[1], cant,arrayDeCadenas[3]);
 		localStorage['carrito'] = JSON.stringify([yare]);
 	}
 }
@@ -203,7 +204,7 @@ function miFuncion() {
 		$(".dropdown-item").remove();
 		arrayx.forEach(item => {
 			$("#poep").append('<div  class="dropdown-divider"></div>');
-			$("#poep").append('<a   class="dropdown-item" href="#">' +item.nombre +' x'+ item.cant+ '</a>');
+			$("#poep").append('<a   class="dropdown-item" href="#">' +item.nombre +' x'+ item.cant+'  $'+item.precio+'</a>');
 
 		});
 
